@@ -4,7 +4,7 @@ import { MarvelContext } from "../../context/marvelContext";
 import "./Table.scss";
 
 import MarvelList from "./MarvelList";
-import Pagination from "../Pagination/";
+import NewPagination from "../NewPagination";
 
 const Table = () => {
   const { data } = useContext(MarvelContext);
@@ -13,19 +13,21 @@ const Table = () => {
     <section id="table">
       <div className="container_list">
         <div className="titles">
-          <h3 className="character"> Character </h3>
-          <h3 className="series"> Series </h3>
-          <h3 className="eventos"> Events </h3>
+          <h3 className="character"> Personagem </h3>
+          <h3 className="series"> Séries </h3>
+          <h3 className="eventos"> Eventos </h3>
         </div>
         <ul>
           {data.results?.length === 0 ? (
-            <div className="didnt-found"> No Character found, try again </div>
+            <div className="didnt-found">
+              Nenhum personagem encontrado, tente novamente
+            </div>
           ) : (
             <MarvelList data={data.results} />
           )}
         </ul>
-        <Pagination />
       </div>
+      <NewPagination />
     </section>
   );
 };

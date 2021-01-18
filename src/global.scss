@@ -8,15 +8,15 @@
 :root {
   --darkBg: #212121;
   --darkHeaderBg: rgba(33, 33, 33, 0.9);
-  --lightHeaderBg: #ececec;
+  --lightHeaderBg: #e5e5e5;
   --textLightColor: #fff;
-  --textDarkColor: #141418;
-  --darkCardBg: rgba(0, 0, 0, 0.2);
-  --lightCardBg: rgba(218, 211, 211, 0.2);
+  --textDarkColor: ##555555;
+  --darkCardBg: #ffffff;
+  --lightCardBg: #f5f5f5;
   --mainYellow: #feca0d;
-  --mainPurple: #5c415d;
+  --mainBlue: #167abc;
   font-size: 90%;
-  font-family: "Ubuntu";
+  font-family: "PT Sans", sans-serif;
 }
 
 a {
@@ -27,14 +27,14 @@ a {
   --bg: var(--darkBg);
   --headerBg: var(--darkHeaderBg);
   --textColor: var(--textLightColor);
-  --diffColor: var(--mainYellow);
+  --diffColor: var(--mainBlue);
   --cardBg: var(var(--darkCardBg));
 }
 
 .light {
   --bg: var(--lightHeaderBg);
-  --headerBg: var(--lightHeaderBg);
+  --headerBg: var(--darkCardBg);
   --textColor: var(--textDarkColor);
-  --diffColor: var(--mainPurple);
+  --diffColor: var(--mainBlue);
   --cardBg: var(--lightCardBg);
 }

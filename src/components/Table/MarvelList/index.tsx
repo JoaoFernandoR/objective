@@ -5,7 +5,7 @@ import "./MarvelList.scss";
 const MarvelList = ({ data }: any) => {
   return (
     <div>
-      {data?.map((item: any, index: any) => (
+      {data?.map((item: any, index: number) => (
         <Marvelitem
           name={item.name}
           thumbnail={item.thumbnail}
@@ -13,6 +13,7 @@ const MarvelList = ({ data }: any) => {
           events={item.events}
           key={index}
           id={item.id}
+          valor={index}
         />
       ))}
     </div>

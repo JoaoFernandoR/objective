@@ -7,15 +7,15 @@ export const MarvelContext = createContext({} as any);
 const MarvelProvider = ({ children }: any) => {
   const [data, setData] = useState<any>([]);
 
-  const [activePage, setActivePage] = useState(0);
-  const [totalPages, setTotalPages] = useState(1);
-  const [singleCharOffset, setSingleCharOffset] = useState(5);
+  const [activePage, setActivePage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const [singleCharOffset, setSingleCharOffset] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
       await api
         .get(
-          `http://gateway.marvel.com/v1/public/characters?ts=1556322834&apikey=5d565b9ada79917a3b7d4955503ba2b3&hash=e17fd454cbef5833153cb0c5a847a49c&offset=${activePage}&limit=10`
+          `http://gateway.marvel.com/v1/public/characters?ts=1556322834&apikey=5d565b9ada79917a3b7d4955503ba2b3&hash=e17fd454cbef5833153cb0c5a847a49c&offset=${singleCharOffset}&limit=10`
         )
         .then((result) => {
           setData(result.data.data);
@@ -24,7 +24,7 @@ const MarvelProvider = ({ children }: any) => {
         .catch((err) => console.log(err.error));
     };
     fetchData();
-  }, [activePage]);
+  }, [singleCharOffset]);
 
   const getSingleCharacter = async (name: string) => {
     await api
@@ -38,12 +38,9 @@ const MarvelProvider = ({ children }: any) => {
       .catch((err) => console.log(err));
   };
 
-  const handlePagination = (index: number) => {
-    setActivePage(index);
-  };
-
-  const handleCharOffset = (index: number) => {
-    setSingleCharOffset(index);
+  const handlePagination = (pageNumber: number) => {
+    setSingleCharOffset(pageNumber * 10);
+    setActivePage(pageNumber);
   };
 
   return (
@@ -53,8 +50,9 @@ const MarvelProvider = ({ children }: any) => {
         activePage,
         handlePagination,
         getSingleCharacter,
-        handleCharOffset,
-        totalPages: totalPages,
+        singleCharOffset,
+        setSingleCharOffset,
+        totalPages: totalPages - 1,
       }}
     >
       {children}
