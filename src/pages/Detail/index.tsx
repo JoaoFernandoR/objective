@@ -75,7 +75,7 @@ const Detail = () => {
     <section id="detail">
       <div className="container-detail">
         <Link to="/" className="icon-left">
-          <AiOutlineLeft color="#feca0d" size={24} className="icon" />
+          <AiOutlineLeft size={24} className="icon" />
         </Link>
         <div className="info-image">
           <div className="container-img">
