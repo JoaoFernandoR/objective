@@ -1,0 +1,52 @@
+#table {
+  .container_list {
+    width: 80%;
+    margin: 0rem auto;
+    max-width: 1200px;
+    color: var(--textColor);
+  }
+
+  .titles {
+    display: flex;
+    background-image: linear-gradient(var(--headerBg), var(--mainPurple));
+    height: 40px;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-left: 1rem;
+    justify-content: space-between;
+
+    .series,
+    .character {
+      width: 40%;
+      padding: 1rem;
+    }
+
+    .eventos {
+      width: 20%;
+      padding: 1rem;
+
+      @media (max-width: 500px) {
+        display: none;
+      }
+    }
+
+    .series {
+      @media (max-width: 500px) {
+        display: none;
+      }
+    }
+  }
+
+  .didnt-found {
+    text-align: center;
+    padding: 5rem;
+    font-size: 3rem;
+    font-weight: bold;
+
+    @media (max-width: 500px) {
+      padding: 0rem;
+      margin-top: 20px;
+    }
+  }
+}

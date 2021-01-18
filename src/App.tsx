@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import MarvelProvider from "../src/context/marvelContext";
 
-function App() {
+import Header from "./components/Header";
+
+import Home from "./pages/Home";
+import Detail from "./pages/Detail";
+
+const App = () => {
+  const [className, setClassName] = useState(true);
+
+  const handleTheme = () => {
+    setClassName(!className);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <MarvelProvider>
+        <div className={className ? "dark" : "light"}>
+          <Header handleTheme={handleTheme} />
+          <Switch>
+            <Route path="/" component={Home} exact />
+            <Route path="/detail/:charID" component={Detail} exact />
+            <Redirect to="/" />
+          </Switch>
+        </div>
+      </MarvelProvider>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;

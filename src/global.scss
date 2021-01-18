@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+:root {
+  --darkBg: #212121;
+  --darkHeaderBg: rgba(33, 33, 33, 0.9);
+  --lightHeaderBg: #ececec;
+  --textLightColor: #fff;
+  --textDarkColor: #141418;
+  --darkCardBg: rgba(0, 0, 0, 0.2);
+  --lightCardBg: rgba(218, 211, 211, 0.2);
+  --mainYellow: #feca0d;
+  --mainPurple: #5c415d;
+  font-size: 90%;
+  font-family: "Ubuntu";
+}
+
+a {
+  text-decoration: none;
+}
+
+.dark {
+  --bg: var(--darkBg);
+  --headerBg: var(--darkHeaderBg);
+  --textColor: var(--textLightColor);
+  --diffColor: var(--mainYellow);
+  --cardBg: var(var(--darkCardBg));
+}
+
+.light {
+  --bg: var(--lightHeaderBg);
+  --headerBg: var(--lightHeaderBg);
+  --textColor: var(--textDarkColor);
+  --diffColor: var(--mainPurple);
+  --cardBg: var(--lightCardBg);
+}
