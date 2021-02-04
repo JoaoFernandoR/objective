@@ -10,6 +10,9 @@ const NewPagination = () => {
     MarvelContext
   );
 
+  console.log("activePage", activePage);
+  console.log("totalPages", totalPages);
+
   return (
     <div className="pagination">
       <Pagination

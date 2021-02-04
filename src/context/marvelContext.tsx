@@ -8,11 +8,12 @@ const MarvelProvider = ({ children }: any) => {
   const [data, setData] = useState<any>([]);
 
   const [activePage, setActivePage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
+  const [totalPages, setTotalPages] = useState(1);
   const [singleCharOffset, setSingleCharOffset] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
+      console.log("singleCharOffSet", singleCharOffset);
       await api
         .get(
           `http://gateway.marvel.com/v1/public/characters?ts=1556322834&apikey=5d565b9ada79917a3b7d4955503ba2b3&hash=e17fd454cbef5833153cb0c5a847a49c&offset=${singleCharOffset}&limit=10`
@@ -39,7 +40,8 @@ const MarvelProvider = ({ children }: any) => {
   };
 
   const handlePagination = (pageNumber: number) => {
-    setSingleCharOffset(pageNumber * 10);
+    // Aqui estava o problema, quando chegava na pagina 1, mandava 10 como offSet, quando era pra mandar zero
+    setSingleCharOffset((pageNumber - 1) * 10);
     setActivePage(pageNumber);
   };
 
